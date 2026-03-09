@@ -5,20 +5,20 @@
 class OrcaTui < Formula
   desc "Docker Compose TUI manager"
   homepage "https://github.com/r7sqtr/orca"
-  version "0.1.2"
+  version "0.1.3"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/r7sqtr/orca/releases/download/v0.1.2/orca_0.1.2_darwin_amd64.tar.gz"
-      sha256 "c902db576e3848ae32e85932694687537cda819d4310e1e4bdce7e4eeaf85eb1"
+      url "https://github.com/r7sqtr/orca/releases/download/v0.1.3/orca_0.1.3_darwin_amd64.tar.gz"
+      sha256 "79e13b8f8ea93489560f39c122b3cf3e30d6bb0dd1f783ecd26f3f6cc9eeedc8"
 
       define_method(:install) do
         bin.install "orca"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/r7sqtr/orca/releases/download/v0.1.2/orca_0.1.2_darwin_arm64.tar.gz"
-      sha256 "9bec71cbc777327818a4de9acb95b9b1d2f2633a85e82cf4989a8bc213a6401f"
+      url "https://github.com/r7sqtr/orca/releases/download/v0.1.3/orca_0.1.3_darwin_arm64.tar.gz"
+      sha256 "a6667127cb71fb5a7463b3f35da74a12a00354d3f8361b8c7d35fa9ae240f178"
 
       define_method(:install) do
         bin.install "orca"
@@ -28,15 +28,15 @@ class OrcaTui < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/r7sqtr/orca/releases/download/v0.1.2/orca_0.1.2_linux_amd64.tar.gz"
-      sha256 "8296f8690dec098d51483b063dd9c15ff72ab3f9481e0955f3731103d3f94434"
+      url "https://github.com/r7sqtr/orca/releases/download/v0.1.3/orca_0.1.3_linux_amd64.tar.gz"
+      sha256 "8c2ab56031cc6cbc0dd50a9a64f5e7debf3bb5072f146a95b2bb91cec63f40cd"
       define_method(:install) do
         bin.install "orca"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/r7sqtr/orca/releases/download/v0.1.2/orca_0.1.2_linux_arm64.tar.gz"
-      sha256 "c34f04e6b508fc6dce6d389b653f82f2d1258d53eddbc220ce98baaec5c80f06"
+      url "https://github.com/r7sqtr/orca/releases/download/v0.1.3/orca_0.1.3_linux_arm64.tar.gz"
+      sha256 "3c7951767b81171639eae8d535270054acdb29776706731255205871c802e56c"
       define_method(:install) do
         bin.install "orca"
       end
