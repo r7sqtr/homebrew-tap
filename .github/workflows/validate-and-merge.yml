@@ -1,0 +1,36 @@
+name: Validate and Auto-merge Formula Update
+
+on:
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: PR のソースを検証
+      run: |
+        PR_HEAD="${{ github.event.pull_request.head.ref }}"
+        echo "PR Head Branch: $PR_HEAD"
+
+        if [[ ! "$PR_HEAD" =~ ^goreleaser/ ]]; then
+          echo "::error::PR branch does not match goreleaser pattern: $PR_HEAD"
+          exit 1
+        fi
+        echo "Validation passed"
+
+  auto-merge:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+    - name: 自動マージを有効化
+      run: gh pr merge --auto --squash "$PR_NUMBER"
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PR_NUMBER: ${{ github.event.pull_request.number }}
