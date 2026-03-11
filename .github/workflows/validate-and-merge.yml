@@ -29,6 +29,7 @@ jobs:
     needs: validate
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
     - name: 自動マージを有効化
       run: gh pr merge --auto --squash "$PR_NUMBER"
       env:
